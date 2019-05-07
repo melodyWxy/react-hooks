@@ -1,13 +1,17 @@
 
-import React,{Component} from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import DemoOne from './Components/DemoOne';
+import DemoTwo from './Components/DemoTwo';
 
-function App (){
+function Demo (){
     return (
         <div >
-            123
+            <DemoOne />
+            <DemoTwo />
         </div>
     )
 }
 // export default App;
 const root = document.getElementById('root');
-ReactDOM.render(<App />,root);
+ReactDOM.render(<Demo />,root);
