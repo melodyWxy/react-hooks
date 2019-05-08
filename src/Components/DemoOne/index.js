@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 
 function DemoOne (){
     const [count,setCount] = useState(520);
@@ -6,7 +6,7 @@ function DemoOne (){
         const res =  count*2;
         setCount(res)
     }
-    return (
+    return (    
         <div>
             Demo1：
             <div >
