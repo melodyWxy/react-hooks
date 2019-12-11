@@ -22,8 +22,17 @@ module.exports = {
     rules:[
         {
             test:/|.(js|jsx)$/,
-            use:['babel-loader'],
-            exclude:/node_modules/
+            use:[{
+              loader:'babel-loader',
+              // options:{
+              //   presets:['env']
+              //   // "babelrc":true,
+              //   // "plugins": [
+              //   //   "dynamic-import-webpack"
+              //   // ] 
+              // }
+            }],
+            // exclude:/node_modules/
         },
         {
             test:/\.css$/,use:['style-loader','css-loader?modules&localIdentName=[name]-[hash:base64:5]'],
