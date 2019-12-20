@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React from 'react';
 import {constructor,componentDidMount,componentWillUnmount,componentWillReceiveProps} from './../../hookUtils/lifeHooks';
 
 

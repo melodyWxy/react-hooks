@@ -18,7 +18,7 @@ export function componentDidMount(fn){
     },[])
 }
 
-//fn   在comopnentDidMount的时候会执行这个函数 默认形参:preProps，nextProps
+//fn   在componentWillReceiveProps的时候会执行这个函数 默认形参:preProps，nextProps
 //props 只需把组件的props传进来
 export function componentWillReceiveProps(fn,props){
     const propRef = useRef(props);
