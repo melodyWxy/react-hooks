@@ -16,7 +16,7 @@ function View (){
             view =  <Content a={a}/>;
             break;
         case 1: 
-            view = <Demo2 />;
+            view = <Demo2 a={a}/>;
             break;
         default :
             view =  <Content /> 
@@ -24,28 +24,26 @@ function View (){
     }
     return (
         <div>
-            <button onClick={()=>{
-                const index = showIndex===0 ?1:0;
-                setIndex(index);
-            }}>点击切换view</button>
+            <div>
+                <button onClick={()=>{
+                    const index = showIndex===0 ?1:0;
+                    setIndex(index);
+                }}>
+                    点击切换组件(卸载当前组件)
+                </button>
+            </div>
             <button onClick={()=>{
                 seta(a+1)
             }}>点击更新props</button>
             <button onClick={()=>{
                 setb(b+1)
-            }}>点击更新父组件</button>
+            }}>点击更新父组件(只触发组件render)</button>
             {view}
         </div>
     )
 }
 
 function Demo (){
-    const [count, setcount] = useState(0);
-    // setTimeout(()=>{
-    //     setcount(10)
-    // },10000)
-  
-
     return (
         <>
             <Profiler id='errorBoundary' onRender={()=>{}}>

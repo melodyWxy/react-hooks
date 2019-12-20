@@ -35,6 +35,7 @@ function DemoOne ({a}){
     console.log('===render')
     return (    
             <div>
+                Demo1：
                 <div>
                     <button onClick={()=>setCount(count+1)} >{a}点击我更新state{count}</button>
                 </div>
