@@ -1,36 +1,42 @@
-import React,{useState,useEffect,useRef,useLayoutEffect,useReducer,useContext} from 'react';
-console.log(useState);
+import React,{useState,useEffect,useRef,useMemo} from 'react';
 
-function DemoOne (props){
+function DemoOne ({a}){
     const [count,setCount] = useState(520);
-    const refs = useRef();
-    // const refs = {
-    //     current:null
-    // }
-    function double(){
-        const res = count*2;
-        setCount(res);
+    const constructorRef = useRef(0);
+    if(constructorRef.current === 0) {
+        console.log('constructor');
+        console.log('componentWillMount');
     }
+    useMemo(()=>{
+        if(constructorRef.current!==0){
+            console.log('componentWillReciverProps');
+        }
+    },[a])
 
-    // setTimeout(()=>{
-    //     throw new Error('这是一个错误');
-    // },5000)
+    useMemo(()=>{
+        if(constructorRef.current!==0){
+            console.log('shouldComponentUpdate');
+            console.log('componentWillUpdate');
+        }
+        return  count
+    },[a,count])
     useEffect(()=>{
-        console.log('xxx');
-        console.log(refs);
-    })
-    // useLaz
+        if(constructorRef.current!==0){
+            console.log('componentDidUpdate');
+        }
+    },[a,count])
+    useEffect(()=>{
+        constructorRef.current = 1;
+        console.log('componentDidmount');
+        return ()=>{
+            console.log('componentWillUnmount');
+        }
+    },[])
+    console.log('===render')
     return (    
             <div>
-                Demo1:
-                <div  ref={refs}>
-                    {count}
-                </div>
                 <div>
-                    <button onClick={()=>setCount(count+1)}>点击我加一</button>
-                </div> 
-                <div>
-                    <button onClick={double}>点击我翻倍哟</button>
+                    <button onClick={()=>setCount(count+1)} >{a}点击我更新state{count}</button>
                 </div>
             </div>
     )
